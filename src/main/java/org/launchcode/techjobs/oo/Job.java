@@ -31,6 +31,21 @@ public class Job {
     }
 
     public String toString() {
+        if (name.equals("")) {
+            setName("Data not available");
+        }
+        if (employer.getValue().equals("")) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("")) {
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("")) {
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")) {
+            coreCompetency.setValue("Data not available");
+        }
         return "\n" +
                 "ID: "+ this.getId()+ "\n" +
                 "Name: "+ this.getName()+ "\n" +

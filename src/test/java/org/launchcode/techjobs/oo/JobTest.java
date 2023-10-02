@@ -12,20 +12,19 @@ public class JobTest {
     }
 
     @Test
-    public void testJobConstructorSetsALlFields() {
-        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    public void testJobConstructorSetsAllFields() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("Product tester", testJob.getName()); //don't need a getValue on a string
+        assertEquals("ACME", testJob.getEmployer().getValue());
+        assertEquals("Desert", testJob.getLocation().getValue());
+        assertEquals("Quality control", testJob.getPositionType().getValue());
+        assertEquals("Persistence", testJob.getCoreCompetency().getValue());
 
-        assertTrue(job instanceof Job);
-        assertTrue(job.getEmployer() instanceof Employer );
-        assertTrue(job.getLocation() instanceof Location );
-        assertTrue(job.getPositionType() instanceof PositionType );
-        assertTrue(job.getCoreCompetency() instanceof CoreCompetency );
-
-        assertEquals("Product tester", job.getName());
-        assertEquals("ACME", job.getEmployer().getValue());
-        assertEquals("Desert", job.getLocation().getValue());
-        assertEquals("Quality control", job.getPositionType().getValue());
-        assertEquals("Persistence", job.getCoreCompetency().getValue());
+        assertTrue(testJob instanceof Job);
+        assertTrue(testJob.getEmployer() instanceof Employer);
+        assertTrue(testJob.getLocation() instanceof Location);
+        assertTrue(testJob.getPositionType() instanceof PositionType);
+        assertTrue(testJob.getCoreCompetency() instanceof CoreCompetency);
     }
 
     @Test
@@ -40,7 +39,7 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        Job job =  new Job();
+        Job job =  new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = job.toString();
         assertEquals('\n', testString.charAt(0));
         assertEquals('\n', testString.charAt(testString.length()-1));
@@ -48,7 +47,7 @@ public class JobTest {
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
-        Job job = new Job();
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = "\n" +
                 "ID: " + job.getId() + "\n" +
                 "Name: " + job.getName() + "\n" +
